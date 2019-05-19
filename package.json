@@ -1,0 +1,30 @@
+{
+  "name": "tools-minecraft",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "repository": "https://github.com/thalessd/tools-minecraft.git",
+  "author": "Thales Carvalho <thalessd@live.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "nodemon --exec babel-node src/app.js",
+    "build": "babel src --out-dir ./dist/src && copy-pkg ./package.json ./dist/package.json --ignore devDependencies,scripts && javascript-obfuscator ./dist/src --output ./",
+    "serve": "node dist/src/app.js"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "pouchdb": "^7.0.0",
+    "telegraf": "^3.29.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "copy-pkg": "^1.0.0",
+    "javascript-obfuscator": "^0.18.1",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.17.0"
+  }
+
+}
