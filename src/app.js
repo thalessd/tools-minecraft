@@ -1,26 +1,14 @@
 import "@babel/polyfill";
+import "dotenv/config";
 import * as minecraftServer from "./service/minecraftServer";
+import * as telegramBot from "./service/telegramBot";
 import path from "path";
+import controller from "./controller";
 
 const pathServerFolder = path.join(__dirname, "minecraft_server");
-const event = minecraftServer.start(pathServerFolder);
 
-event.on("error", () => {
-  console.err("Err");
-});
+const mcServer = minecraftServer.start(pathServerFolder);
 
-event.on("server_up", () => {
-  console.log("O Servidor Iniciou");
-});
+controller({ mcServer, bot: telegramBot.bot });
 
-event.on("chat", data => {
-  console.log(data);
-});
-
-event.on("user_login", data => {
-  console.log(data);
-});
-
-event.on("user_logout", data => {
-  console.log(data);
-});
+telegramBot.launch();
