@@ -7,13 +7,15 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "nodemon --exec babel-node src/app.js",
+    "start": "babel-node src/app.js",
+    "dev": "nodemon --exec babel-node src/app.js",
     "build": "babel src --out-dir ./dist/src && copy-pkg ./package.json ./dist/package.json --ignore devDependencies,scripts && javascript-obfuscator ./dist/src --output ./",
     "serve": "node dist/src/app.js"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "pouchdb": "^7.0.0",
+    "shelljs": "^0.8.3",
     "telegraf": "^3.29.0"
   },
   "devDependencies": {
@@ -26,5 +28,4 @@
     "nodemon": "^1.18.10",
     "prettier": "^1.17.0"
   }
-
 }
